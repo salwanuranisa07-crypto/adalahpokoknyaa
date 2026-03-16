@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>letter · for reza ✨</title>
+    <!-- font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== style persis sama seperti sebelumnya ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #d6e4f0;
+            background: radial-gradient(circle at 30% 20%, #e2edf7, #c0d4e8);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .envelope {
+            max-width: 760px;
+            width: 100%;
+            background: #f5f3f0;
+            border-radius: 28px 28px 20px 20px;
+            box-shadow: 0 25px 35px -15px #2f455f, 0 5px 0 0 #e0dbd2 inset;
+            border: 2px solid #ffffff80;
+            padding: 55px 30px 40px 30px;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .envelope:hover {
+            box-shadow: 0 30px 40px -12px #1f3a4e;
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: 25%;
+            width: 50%;
+            height: 28px;
+            background: #eae5dc;
+            border-radius: 0 0 30px 30px;
+            border-bottom: 3px solid #cfc6b8;
+            box-shadow: 0 -4px 6px -4px #6e5e4e;
+        }
+
+        .postmark {
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            font-size: 1.8rem;
+            background: #e6ded2;
+            padding: 6px 18px;
+            border-radius: 50px;
+            border: 2px solid white;
+            box-shadow: 0 4px 0 #afa28e;
+            color: #3f4f5f;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transform: rotate(3deg);
+            z-index: 3;
+            transition: transform 0.2s ease;
+        }
+
+        .postmark:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .letter-paper {
+            background: #fefefe;
+            border-radius: 32px 32px 24px 24px;
+            padding: 38px 22px 32px 22px;
+            box-shadow: 0 0 0 2px #f0e7db, 0 10px 20px -15px #1e2a36;
+            border: 2px solid #fffefc;
+            position: relative;
+            z-index: 2;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+        }
+
+        .letter-paper:hover {
+            box-shadow: 0 0 0 2px #f0e7db, 0 15px 25px -12px #1e2a36;
+        }
+
+        .letter-main-content {
+            position: relative;
+            min-height: 300px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .message-stage {
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 0 20px;
+        }
+
+        .text-display {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #1f2c39;
+            text-align: center;
+            max-width: 580px;
+            background: #fcfaf7;
+            padding: 30px 20px;
+            border-radius: 70px 70px 40px 40px;
+            border: 2px solid #e2e6ec;
+            box-shadow: 0 8px 0 #cbd2da, 0 12px 25px -18px #1d2a33;
+            word-break: break-word;
+            white-space: pre-line;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-reveal {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #d44c66;
+            background: #fff0f0;
+            padding: 12px 24px;
+            border-radius: 60px;
+            margin-top: 20px;
+            box-shadow: 0 4px 0 #c07e8a;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid white;
+        }
+
+        .popup-reveal.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .love-choice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0 10px;
+            flex-wrap: wrap;
+        }
+
+        .love-btn {
+            font-size: 1.9rem;
+            font-weight: 600;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 60px;
+            background: white;
+            box-shadow: 0 7px 0 #aab9cc, 0 10px 20px -12px #1b3140;
+            cursor: pointer;
+            transition: all 0.15s ease, transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            border: 2px solid white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            transform: translateY(0);
+        }
+
+        .love-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 9px 0 #aab9cc, 0 12px 20px -12px #1b3140;
+        }
+
+        .love-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #94a5bb, 0 10px 20px -12px #1f3543;
+        }
+
+        .btn-yes {
+            background: #e2ecf5;
+            color: #1b3a4e;
+            box-shadow: 0 7px 0 #b7c9dd;
+        }
+
+        .btn-no {
+            background: #e6e9ed;
+            color: #4a5560;
+            box-shadow: 0 7px 0 #b7c0cb;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-no:hover {
+            animation: lariKiriKanan 0.6s infinite alternate ease-in-out;
+            background: #f0d5d5;
+            box-shadow: 0 4px 0 #b29b9b;
+        }
+
+        @keyframes lariKiriKanan {
+            0% { transform: translateX(0px) rotate(0deg); }
+            30% { transform: translateX(40px) rotate(6deg); }
+            70% { transform: translateX(-35px) rotate(-5deg); }
+            100% { transform: translateX(20px) rotate(3deg); }
+        }
+
+        .next-btn {
+            background: #dfeaf3;
+            border: 3px solid white;
+            border-radius: 60px;
+            padding: 16px 50px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1b3b4f;
+            box-shadow: 0 9px 0 #b0c2d6, 0 12px 20px -18px #0a1e2c;
+            cursor: pointer;
+            transition: all 0.15s ease, box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            font-family: 'Inter', sans-serif;
+            margin: 25px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: fit-content;
+        }
+
+        .next-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 11px 0 #b0c2d6, 0 14px 20px -18px #0a1e2c;
+        }
+
+        .next-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #95aac2, 0 12px 20px -18px #091b28;
+        }
+
+        .next-btn:not(:active) {
+            transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .hidden-btn {
+            display: none !important;
+        }
+
+        .intro-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fefefe;
+            border-radius: 32px 32px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 30;
+            padding: 20px;
+            box-shadow: inset 0 0 0 2px #f0e7db, 0 0 0 2px #ffffff;
+            backdrop-filter: blur(2px);
+        }
+
+        .intro-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2a3f54;
+            text-align: center;
+            margin-bottom: 5px;
+            background: #fcf2e4;
+            padding: 15px 25px;
+            border-radius: 60px;
+            border: 3px solid white;
+            box-shadow: 0 8px 0 #dbcbb8;
+            line-height: 1.4;
+        }
+
+        .big-cake {
+            font-size: 8rem;
+            line-height: 1;
+            margin: 10px 0 10px;
+            filter: drop-shadow(0 8px 6px #f0b27a);
+            animation: cakeWobble 2s infinite alternate;
+        }
+
+        @keyframes cakeWobble {
+            from { transform: rotate(-2deg); }
+            to { transform: rotate(2deg); }
+        }
+
+        .rayakan-btn {
+            background: #fdcba0;
+            border: 4px solid white;
+            border-radius: 80px;
+            padding: 18px 60px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3d2b1a;
+            box-shadow: 0 10px 0 #b98f6e, 0 15px 25px -12px #3d2b1a;
+            cursor: pointer;
+            transition: all 0.15s ease, transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            margin-top: 10px;
+            border: 3px solid #fffcf5;
+        }
+
+        .rayakan-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 0 #b98f6e, 0 18px 25px -12px #3d2b1a;
+        }
+
+        .rayakan-btn:active {
+            transform: translateY(8px);
+            box-shadow: 0 2px 0 #b98f6e, 0 15px 25px -12px #3d2b1a;
+        }
+
+        .stamps-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 35px 0 5px;
+            flex-wrap: wrap;
+        }
+
+        .stamp {
+            width: 28px;
+            height: 28px;
+            background: #cddbe9;
+            border-radius: 8px 16px 8px 16px;
+            border: 3px solid white;
+            box-shadow: 0 3px 0 #92a3b5;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+        }
+
+        .stamp.active {
+            background: #7398c2;
+            width: 46px;
+            border-radius: 12px 20px 12px 20px;
+            box-shadow: 0 5px 0 #3d6185;
+            border: 3px solid #ffffff;
+            transform: scale(1.15) rotate(2deg);
+            animation: stampPulse 1.2s infinite alternate ease-in-out;
+        }
+
+        @keyframes stampPulse {
+            0% { transform: scale(1.15) rotate(2deg); box-shadow: 0 5px 0 #3d6185; }
+            100% { transform: scale(1.2) rotate(2deg); box-shadow: 0 7px 0 #2c4b6e; }
+        }
+
+        .envelope-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            color: #6e849b;
+            font-size: 1.1rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-dots {
+            letter-spacing: 2px;
+        }
+
+        .for-reza {
+            font-style: italic;
+            font-weight: 500;
+            background: #e0dcd5;
+            padding: 5px 14px;
+            border-radius: 40px;
+            border: 2px solid white;
+            box-shadow: 0 3px 0 #b3ad9f;
+            color: #2f4858;
+        }
+
+        #sendHugContainer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #sendHugBtn {
+            font-size: 1.6rem;
+            padding: 12px 30px;
+            background: #fdd0e2;
+            color: #a13d5e;
+            box-shadow: 0 7px 0 #d498b4;
+        }
+        #sendHugBtn:hover {
+            background: #ffe1ef;
+        }
+
+        #confettiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .burst-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2000;
+            overflow: hidden;
+        }
+
+        .burst-item {
+            position: absolute;
+            font-size: 2.2rem;
+            user-select: none;
+            animation: floatBurst 2.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(0) scale(1);
+        }
+
+        @keyframes floatBurst {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            70% { opacity: 0.8; transform: translateY(-90px) scale(0.8); }
+            100% { opacity: 0; transform: translateY(-120px) scale(0.6); }
+        }
+
+        @media (max-width: 550px) {
+            .envelope { padding: 45px 18px 30px; }
+            .text-display { font-size: 1.6rem; padding: 22px 16px; }
+            .love-btn { font-size: 1.6rem; padding: 14px 28px; }
+            .next-btn { font-size: 1.6rem; padding: 14px 35px; }
+            .stamp.active { width: 40px; }
+            .popup-reveal { font-size: 1.2rem; padding: 8px 16px; }
+            .intro-title { font-size: 1.7rem; padding: 12px 18px; }
+            .big-cake { font-size: 6rem; }
+            .rayakan-btn { font-size: 1.8rem; padding: 14px 40px; }
+        }
+
+        @media (max-width: 380px) {
+            .text-display { font-size: 1.4rem; }
+            .love-btn { font-size: 1.4rem; padding: 12px 22px; }
+            .intro-title { font-size: 1.4rem; }
+            .big-cake { font-size: 5rem; }
+            .rayakan-btn { font-size: 1.6rem; padding: 12px 30px; }
+        }
+    </style>
+</head>
+<body>
+<!-- AUDIO INTRO SEMPURNA -->
+<audio id="bgMusic" loop preload="auto" style="display:none;">
+    <source src="sempurna-intro.mp3" type="audio/mpeg">
+</audio>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <div class="envelope">
+        <div class="postmark">✉️ AIR MAIL</div>
+
+        <div class="letter-paper">
+            <div class="letter-main-content">
+                <div class="message-stage">
+                    <div class="text-display" id="slideMessage"></div>
+                    <div id="popupReveal" class="popup-reveal">yes, that one 😏</div>
+                    <!-- send hug container (muncul di slide 17) -->
+                    <div id="sendHugContainer" style="display: none;">
+                        <button class="love-btn" id="sendHugBtn">🤗 send hug</button>
+                    </div>
+                </div>
+
+                <div id="loveQuestionArea">
+                    <div class="love-choice">
+                        <button class="love-btn btn-yes" id="yesBtn">yes</button>
+                        <button class="love-btn btn-no" id="noBtn">no</button>
+                    </div>
+                    <div style="text-align: center; font-size:1rem; color:#5f6a75; margin-top:5px;">
+                        (the "no" button runs away — try it)
+                    </div>
+                </div>
+
+                <button class="next-btn hidden-btn" id="nextBtn">
+                    <span>next →</span>
+                </button>
+
+                <!-- INTRO SCREEN: happy birthday sayang + big cake + Rayakan! -->
+                <div class="intro-screen" id="introScreen">
+                    <div class="intro-title">happy birthday sayang<br>૮₍˶ •. •⑅₎ა♡</div>
+                    <div class="big-cake">🎂</div>
+                    <button class="rayakan-btn" id="rayakanBtn">Rayakan!</button>
+                </div>
+            </div>
+
+            <!-- progress stamps (18 buah) -->
+            <div class="stamps-row" id="stampContainer">
+                <span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>
+            </div>
+        </div>
+
+        <div class="envelope-footer">
+            <span class="footer-dots">· · ───–—–── ·</span>
+            <span class="for-reza">for: reza</span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ===== ISI SURAT (18 slide, 0-17) =====
+            const messages = [
+                "do you love me?",                                 // 0
+                "hey you🫵🏻",                                        // 1
+                "can i steal a few seconds of your birthday?",    // 2
+                "because today is special.",                       // 3
+                "twenty years ago, someone really important was born.", // 4
+                "and now somehow… that person is part of my days.", // 5
+                "the one who talks with me for hours without realizing it.", // 6
+                "the one who somehow always stays awake too late at night.", // 7
+                "the one who makes quiet moments feel comfortable.", // 8
+                "i'm really glad i got to know you like this.",    // 9
+                "so… happy 20th birthday, sayanggg.",              // 10
+                "i hope this year brings you happiness, good things,", // 11
+                "and many days where you smile without even realizing it.", // 12
+                "one more thing…",                                 // 13
+                "sleep early tonight, okay? ૮₍˶ •. •⑅₎ა♡",          // 14
+                "this little website was made by someone who likes you a lot.", // 15
+                "her name is aDalAhH pOk0knYahhH.",                // 16
+                "i loOovee youUu (˶˃ ᵕ ˂˶) - salwa"                          // 17
+            ];
+
+            let currentIdx = 0;
+            const total = messages.length; // 18
+
+            // DOM elements
+            const slideEl = document.getElementById('slideMessage');
+            const loveArea = document.getElementById('loveQuestionArea');
+            const nextBtn = document.getElementById('nextBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const stamps = document.querySelectorAll('.stamp');
+            const popupEl = document.getElementById('popupReveal');
+            const introScreen = document.getElementById('introScreen');
+            const rayakanBtn = document.getElementById('rayakanBtn');
+            const sendHugContainer = document.getElementById('sendHugContainer');
+            const sendHugBtn = document.getElementById('sendHugBtn');
+            const audio = document.getElementById('bgMusic');
+
+            // canvas confetti
+            const canvas = document.getElementById('confettiCanvas');
+            let ctx = canvas?.getContext('2d');
+            let particles = [];
+            let animFrame = null;
+            let confettiOn = false;
+
+            // typing effect
+            let typingInterval = null;
+            const TYPING_SPEED = 35;
+
+            // resize canvas
+            function resizeCanvas() {
+                if (canvas) {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            // Particle for confetti
+            class Part {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height - canvas.height;
+                    this.size = Math.random() * 12 + 5;
+                    this.speedY = Math.random() * 2 + 1.5;
+                    this.speedX = Math.random() * 1.2 - 0.6;
+                    const hue = Math.random() * 40 + (Math.random() > 0.5 ? 0 : 180);
+                    this.color = `hsl(${hue}, 80%, 65%)`;
+                    this.shape = Math.random() > 0.6 ? 'heart' : 'circle';
+                }
+                update() {
+                    this.y += this.speedY * 0.5;
+                    this.x += this.speedX * 0.3;
+                    if (this.y > canvas.height + 50) {
+                        this.y = -20;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+                draw() {
+                    if (!ctx) return;
+                    ctx.globalAlpha = 0.7;
+                    ctx.fillStyle = this.color;
+                    if (this.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size * 0.6, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        ctx.save();
+                        ctx.translate(this.x, this.y);
+                        ctx.scale(0.8, 0.8);
+                        ctx.beginPath();
+                        ctx.moveTo(0, this.size * 0.8);
+                        ctx.bezierCurveTo(-this.size * 0.8, -this.size * 0.4, 0, -this.size * 0.8, 0, -this.size * 0.3);
+                        ctx.bezierCurveTo(this.size * 0.8, -this.size * 0.8, this.size * 0.8, -this.size * 0.4, 0, this.size * 0.8);
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                    ctx.globalAlpha = 1;
+                }
+            }
+
+            function startConfetti() {
+                if (confettiOn) return;
+                confettiOn = true;
+                for (let i = 0; i < 30; i++) particles.push(new Part());
+                if (animFrame) cancelAnimationFrame(animFrame);
+                function animate() {
+                    if (!confettiOn || !ctx) return;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    for (let p of particles) {
+                        p.update();
+                        p.draw();
+                    }
+                    animFrame = requestAnimationFrame(animate);
+                }
+                animate();
+            }
+
+            function stopConfetti() {
+                confettiOn = false;
+                particles = [];
+                if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (animFrame) {
+                    cancelAnimationFrame(animFrame);
+                    animFrame = null;
+                }
+            }
+
+            // Generic burst function
+            function createBurst(emojis) {
+                const existingContainer = document.querySelector('.burst-container');
+                if (existingContainer) existingContainer.remove();
+
+                const container = document.createElement('div');
+                container.className = 'burst-container';
+                document.body.appendChild(container);
+
+                for (let i = 0; i < 30; i++) {
+                    const item = document.createElement('div');
+                    item.className = 'burst-item';
+                    item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    item.style.left = Math.random() * 100 + '%';
+                    item.style.top = (50 + Math.random() * 40) + '%';
+                    item.style.animationDelay = (Math.random() * 0.5) + 's';
+                    item.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
+                    container.appendChild(item);
+                }
+
+                setTimeout(() => {
+                    if (container.parentNode) container.remove();
+                }, 2500);
+            }
+
+            function createLoveBurst() {
+                const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜', '💖', '💗', '💘', '💝'];
+                createBurst(hearts);
+            }
+
+            function createAngryBurst() {
+                const angry = ['😠', '😡', '🤬', '😤', '👿', '💢', '😒', '😑', '😠'];
+                createBurst(angry);
+            }
+
+            function createBalloonBurst() {
+                const balloons = ['🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈', '🎈'];
+                createBurst(balloons);
+            }
+
+            function createHugBurst() {
+                const hugs = ['🤗', '❤️', '💖', '💕', '💓', '😊', '🌸', '💞'];
+                createBurst(hugs);
+            }
+
+            // ===== TYPING EFFECT =====
+            function stopTyping() {
+                if (typingInterval) {
+                    clearInterval(typingInterval);
+                    typingInterval = null;
+                }
+            }
+
+            function startTyping(element, fullText) {
+                stopTyping();
+                const raw = fullText.replace(/<br\s*\/?>/gi, '\n');
+                let index = 0;
+                element.innerHTML = '';
+                element.style.opacity = '1';
+
+                if (raw.length === 0) return;
+
+                typingInterval = setInterval(() => {
+                    index++;
+                    if (index <= raw.length) {
+                        let currentText = raw.substring(0, index);
+                        currentText = currentText.replace(/\n/g, '<br>');
+                        element.innerHTML = currentText;
+                    } else {
+                        clearInterval(typingInterval);
+                        typingInterval = null;
+                    }
+                }, TYPING_SPEED);
+            }
+
+            // update tampilan slide
+            function updateSlide(index) {
+                stopTyping();
+
+                if (index < total) {
+                    startTyping(slideEl, messages[index]);
+                }
+
+                loveArea.style.display = (index === 0) ? 'block' : 'none';
+
+                if (index < total - 1 && index > 0) {
+                    nextBtn.classList.remove('hidden-btn');
+                } else {
+                    nextBtn.classList.add('hidden-btn');
+                }
+
+                if (index === 16) {
+                    popupEl.classList.add('show');
+                } else {
+                    popupEl.classList.remove('show');
+                }
+
+                if (index === 17) {
+                    sendHugContainer.style.display = 'block';
+                } else {
+                    sendHugContainer.style.display = 'none';
+                }
+
+                stamps.forEach((stamp, i) => {
+                    if (i <= index) stamp.classList.add('active');
+                    else stamp.classList.remove('active');
+                });
+
+                if (index >= 9 && index <= 17) {
+                    startConfetti();
+                } else {
+                    stopConfetti();
+                }
+
+                const span = nextBtn.querySelector('span');
+                if (span) {
+                    span.innerText = (index === total - 1) ? 'love 💌' : 'next →';
+                }
+            }
+
+            // ===== EVENT LISTENERS =====
+            yesBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIdx !== 0) return;
+                yesBtn.disabled = true;
+                noBtn.disabled = true;
+                createLoveBurst();
+                setTimeout(() => {
+                    currentIdx = 1;
+                    updateSlide(currentIdx);
+                    yesBtn.disabled = false;
+                    noBtn.disabled = false;
+                }, 400);
+            });
+
+            noBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                createAngryBurst();
+                // Tampilkan pesan godain sebentar
+                const originalMsg = messages[currentIdx];
+                slideEl.innerHTML = 'still think you can click no? 😏<br>just say yes.';
+                setTimeout(() => {
+                    if (currentIdx === 0) {
+                        startTyping(slideEl, messages[0]);
+                    } else {
+                        updateSlide(currentIdx);
+                    }
+                }, 1300);
+                noBtn.style.animation = 'lariKiriKanan 0.5s infinite';
+                setTimeout(() => noBtn.style.animation = '', 2000);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIdx < total - 1) {
+                    currentIdx++;
+                    updateSlide(currentIdx);
+                } else {
+                    slideEl.style.transform = 'scale(1.02)';
+                    setTimeout(() => slideEl.style.transform = '', 120);
+                }
+            });
+
+            // RAYAKAN button: sembunyikan intro, balloon burst, mainkan musik, tampilkan slide 0
+            rayakanBtn.addEventListener('click', () => {
+                introScreen.style.display = 'none';
+                createBalloonBurst();
+                // musik dimulai dengan volume pas
+                audio.volume = 0.3;
+                audio.play().catch(e => console.log('audio autoplay dicegah?', e));
+                currentIdx = 0;
+                updateSlide(0);
+                startConfetti();
+                setTimeout(() => stopConfetti(), 800);
+            });
+
+            // SEND HUG button (di slide 17)
+            sendHugBtn.addEventListener('click', () => {
+                createHugBurst();
+            });
+
+            // Inisialisasi: slide 0 siap, intro tampil
+            currentIdx = 0;
+            slideEl.innerHTML = messages[0]; 
+            loveArea.style.display = 'block';
+            introScreen.style.display = 'flex';
+            sendHugContainer.style.display = 'none';
+            stopConfetti();
+
+            window.addEventListener('beforeunload', () => {
+                stopConfetti();
+            });
+        })();
+    </script>
+</body>
+</html>
